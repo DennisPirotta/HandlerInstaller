@@ -5,7 +5,7 @@ apt install whiptail git -y
 curl -sL https://deb.nodesource.com/setup_19.x | bash
 apt update && apt install nodejs -y
 # Install PHP and Composer
-apt install php-cli php-mbstring php-xml php-bcmath php-curl unzip php-fpm -y
+apt install php-cli php-mbstring php-xml php-bcmath php-curl php-mysql unzip php-fpm -y
 /etc/init.d/php8.1-fpm start
 cd ~ && curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 HASH=$(curl -sS https://composer.github.io/installer.sig)
@@ -25,6 +25,7 @@ cd /var/www/handler && npm update
 cd /var/www/handler && npm install
 cd /var/www/handler && php artisan key:generate
 cd /var/www/handler && npm run build
+cd /var/www/handler && sh database/migrations/restore.sh
 # Set permissions
 chown -R www-data.www-data /var/www/handler/storage
 chown -R www-data.www-data /var/www/handler/bootstrap/cache
@@ -32,4 +33,5 @@ chown -R www-data.www-data /var/www/handler/bootstrap/cache
 apt install nginx -y
 cp ~/HandlerInstaller/handler /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/handler /etc/nginx/sites-enabled/
+rm /etc/nginx/sites-enabled/default
 /etc/init.d/nginx restart
