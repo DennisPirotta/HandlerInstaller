@@ -14,12 +14,10 @@ cd ~ && curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 HASH=`curl -sS https://composer.github.io/installer.sig`
 php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-# Install git
-apt install git -y
 # Setup DB
 apt install mysql-server -y
 /etc/init.d/mysql start
-mysql -uroot < setup.sql
+mysql -uroot < /HandlerInstaller/setup.sql
 # Clone project
 #mkdir /var/www
 #cd /var/www && git clone https://github.com/DennisPirotta/handler.git
