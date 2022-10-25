@@ -34,4 +34,9 @@ apt install nginx -y
 cp ~/HandlerInstaller/handler /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/handler /etc/nginx/sites-enabled/
 rm /etc/nginx/sites-enabled/default
+
 /etc/init.d/nginx restart
+/etc/init.d/php8.1-fpm restart
+/etc/init.d/mysql restart
+
+echo -E "Installazione Completata con successo"
