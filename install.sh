@@ -21,7 +21,9 @@ cd /var/www && git clone https://github.com/DennisPirotta/handler.git
 # Setup project
 cp /var/www/handler/.env.example /var/www/handler/.env
 cd /var/www/handler && composer install
+cd /var/www/handler && npm cache clean --force
 cd /var/www/handler && npm update
+cd /var/www/handler && npm cache clean --force
 cd /var/www/handler && npm install
 cd /var/www/handler && php artisan key:generate
 cd /var/www/handler && npm run build
