@@ -16,11 +16,11 @@ php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo '
 php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 # Install git
 apt install git -y
-# Clone project
-mkdir /var/www
-cd /var/www && git clone https://github.com/DennisPirotta/handler.git
 # Setup DB
 apt install mysql-server -y
 /etc/init.d/mysql start
 mysql -uroot < setup.sql
+# Clone project
+#mkdir /var/www
+#cd /var/www && git clone https://github.com/DennisPirotta/handler.git
 
