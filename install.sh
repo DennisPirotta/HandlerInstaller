@@ -14,14 +14,15 @@ php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ## Setup DB
 apt install mysql-server -y
 /etc/init.d/mysql start
-mysql -uroot < /HandlerInstaller/setup.sql
+mysql -uroot < ~/HandlerInstaller/setup.sql
 # Clone project
 mkdir /var/www
 cd /var/www && git clone https://github.com/DennisPirotta/handler.git
 # Setup project
 cp /var/www/handler/.env.example /var/www/handler/.env
-cd /var/www/handler && npm install
 cd /var/www/handler && composer install
+cd /var/www/handler && npm update
+cd /var/www/handler && npm install
 cd /var/www/handler && php artisan key:generate
 cd /var/www/handler && npm run build
 # Set permissions
@@ -29,6 +30,6 @@ chown -R www-data.www-data /var/www/handler/storage
 chown -R www-data.www-data /var/www/handler/bootstrap/cache
 # Install and configure nginx
 apt install nginx -y
-cp /HandlerInstaller/handler /etc/nginx/sites-available/
+cp ~/HandlerInstaller/handler /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/handler /etc/nginx/sites-enabled/
 /etc/init.d/nginx restart
