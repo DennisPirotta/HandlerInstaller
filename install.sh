@@ -29,6 +29,6 @@ chown -R www-data.www-data /var/www/handler/storage
 chown -R www-data.www-data /var/www/handler/bootstrap/cache
 # Install and configure nginx
 apt install nginx -y
-cp handler /etc/nginx/sites-available/
+cp /HandlerInstaller/handler /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/handler /etc/nginx/sites-enabled/
 /etc/init.d/nginx restart
