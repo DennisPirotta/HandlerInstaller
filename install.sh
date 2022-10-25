@@ -1,7 +1,7 @@
 # Search for update and install it
-apt update
-apt install whiptail -y
-apt upgrade -y
+#apt update
+#apt install whiptail -y
+#apt upgrade -y
 # Install Node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 # shellcheck disable=SC1090
